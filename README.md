@@ -46,7 +46,7 @@ MATLAB's `'matched'` option maps continuous poles and zeros to the $z$-domain wh
 The Tustin method maps the $s$-plane to the $z$-plane through
 
 $$
-s = \frac{2}{T_s}\,\frac{1 - z^{-1}}{1 + z^{-1}}
+s = \frac{2}{T_s} ~\frac{1 - z^{-1}}{1 + z^{-1}}
 $$
 
 It introduces frequency warping but is widely used because it preserves stability and is straightforward to apply directly to transfer-function coefficients.
