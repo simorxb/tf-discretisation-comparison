@@ -46,7 +46,7 @@ MATLAB's `'matched'` option maps continuous poles and zeros to the $z$-domain wh
 The Tustin method maps the $s$-plane to the $z$-plane through
 
 $$
-s = \frac{2}{T_s}\frac{1 - z^{-1}}{1 + z^{-1}}
+s = \frac{2}{T_s} ~\frac{1 - z^{-1}}{1 + z^{-1}}
 $$
 
 It is widely used because it preserves stability and is straightforward to apply directly to transfer-function coefficients. It also preserves the overall frequency response of the system.
@@ -56,7 +56,7 @@ It is widely used because it preserves stability and is straightforward to apply
 For a continuous-time state-space model $\dot{x} = A_c x + B_c u$, $y = C_c x + D_c u$, exact ZOH discretisation over one sample interval gives
 
 $$
-\begin{bmatrix} A_d & B_d \ 0 & I \end{bmatrix} = \exp\left(\begin{bmatrix} A_c & B_c \ 0 & 0 \end{bmatrix} T_s\right)
+\begin{bmatrix} A_d & B_d \\\ 0 & I \end{bmatrix} = \exp\left(\begin{bmatrix} A_c & B_c \\\ 0 & 0 \end{bmatrix} T_s\right)
 $$
 
 Where:
