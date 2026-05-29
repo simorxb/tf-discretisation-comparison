@@ -1,5 +1,5 @@
 %% Compare discretisation methods for G(s) = 1/(s^2 + 0.5*s + 1)
-% Methods: ZOH, Tustin (bilinear), exact ZOH via matrix exponential.
+% Methods: Matched, Tustin (bilinear), exact ZOH via matrix exponential.
 
 clear; clc; close all;
 
