@@ -1,6 +1,6 @@
 # Transfer Function Discretisation Comparison – Second-Order System
 
-[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=simorxb/tf-discretisation-comparison)
+[Open in MATLAB Online](https://matlab.mathworks.com/open/github/v1?repo=simorxb/tf-discretisation-comparison)
 
 ## Summary
 
@@ -39,24 +39,24 @@ Three discrete-time models $G(z)$ are obtained from $G(s)$ at sample time $T_s$.
 
 ### Matched pole-zero mapping
 
-MATLAB's `'matched'` option maps continuous poles and zeros to the $z$-domain while preserving gain at a selected frequency. It is often used when preserving the qualitative frequency response of lightly damped modes matters.
+MATLAB's `'matched'` option maps continuous poles and zeros to the $z$-domain while preserving gain at a selected frequency. It is used when retaining the exact locations of specific poles and zeros in the complex plane is critical.
 
 ### Tustin (bilinear) transform
 
 The Tustin method maps the $s$-plane to the $z$-plane through
 
 $$
-s = \frac{2}{T_s}\,\frac{1 - z^{-1}}{1 + z^{-1}}
+s = \frac{2}{T_s}\frac{1 - z^{-1}}{1 + z^{-1}}
 $$
 
-It introduces frequency warping but is widely used because it preserves stability and is straightforward to apply directly to transfer-function coefficients.
+It is widely used because it preserves stability and is straightforward to apply directly to transfer-function coefficients. It also preserves the overall frequency response of the system.
 
 ### Exact ZOH via matrix exponential
 
 For a continuous-time state-space model $\dot{x} = A_c x + B_c u$, $y = C_c x + D_c u$, exact ZOH discretisation over one sample interval gives
 
 $$
-\begin{bmatrix} A_d & B_d \\\ 0 & I \end{bmatrix} = \exp\left(\begin{bmatrix} A_c & B_c \\\ 0 & 0 \end{bmatrix} T_s\right)
+\begin{bmatrix} A_d & B_d \ 0 & I \end{bmatrix} = \exp\left(\begin{bmatrix} A_c & B_c \ 0 & 0 \end{bmatrix} T_s\right)
 $$
 
 Where:
@@ -65,6 +65,8 @@ Where:
 - $\exp(\cdot)$ is the matrix exponential
 
 This is the exact solution under a zero-order hold on the input between sample instants. It serves as a reference for what `'zoh'` discretisation computes internally from state-space data.
+
+This method preserves the time domain response of the system.
 
 ## Simulation Setup
 
@@ -83,7 +85,7 @@ Running `compare_discretisation.m` produces one figure with:
 
 ### Key Observations
 
-- **Exact ZOH vs matched/Tustin**: at a relatively large $T_s$ relative to the plant dynamics, the three methods diverge noticeably in overshoot, settling time, and sample values.
+- **Exact ZOH vs matched/Tustin**: at a relatively large $T_s$ relative to the plant dynamics, the three methods diverge noticeably in overshoot, settling time, and sample values. It is evident that ZOH via matrix exponential matches perfectly the response in the time domain.
 - **Tustin frequency warping**: bilinear mapping can shift effective damping and natural frequency compared with the continuous model.
 - **Visual sampling**: plotting discrete outputs as dots emphasises that digital models only define behaviour at sample instants.
 
