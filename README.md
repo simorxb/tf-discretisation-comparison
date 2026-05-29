@@ -56,7 +56,7 @@ It introduces frequency warping but is widely used because it preserves stabilit
 For a continuous-time state-space model $\dot{x} = A_c x + B_c u$, $y = C_c x + D_c u$, exact ZOH discretisation over one sample interval gives
 
 $$
-\begin{bmatrix} A_d & B_d \\ 0 & I \end{bmatrix} = \exp\left(\begin{bmatrix} A_c & B_c \\ 0 & 0 \end{bmatrix} T_s\right)
+\begin{bmatrix} A_d & B_d \\\ 0 & I \end{bmatrix} = \exp\left(\begin{bmatrix} A_c & B_c \\\ 0 & 0 \end{bmatrix} T_s\right)
 $$
 
 Where:
